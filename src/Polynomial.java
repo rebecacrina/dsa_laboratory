@@ -36,28 +36,22 @@ public class Polynomial {
 	}
 
 	public Polynomial[] divide(Polynomial b) {
-		List<Monomial> rem = new ArrayList<>();
+		List<Monomial> quotient = new ArrayList<>();
 		Polynomial[] quoRem = new Polynomial[2];
 		Monomial monom;
-		// qouRem[0] the quotient
-		// qouRem[1] the remainder
+		// qouRem[0] the remainder
+		// qouRem[1] the quotient
 		quoRem[0] = clonePoly();
 		while (quoRem[0].getDeg(0) >= b.getDeg(0)) {
 			monom = new Monomial((float)((double)quoRem[0].getCoeff(0) / (double)b.getCoeff(0)),
 					quoRem[0].getDeg(0) - b.getDeg(0));
-			//System.out.println(quoRem[0].getCoeff(0)+ " / "+ b.getCoeff(0));
-			//System.out.println(quoRem[0].getDeg(0)+ " - "+ b.getDeg(0));
-			//System.out.println("monom "+ monom);
 			monom.setCoeff((-1)*monom.getCoeff());
-			quoRem[0]= additionNewPoly(quoRem[0], monomPolyMultiplication(monom, b));
+			quoRem[0]= additionNewPoly(quoRem[0], monomPolyMultiplication(monom, b)); //remainder remains!
 			removeZeroCoeffMonomials(quoRem[0]);
 			monom.setCoeff((-1)*monom.getCoeff());
-			//System.out.println("quotents..."+quoRem[0]);
-			rem.add(monom);
-			//System.out.println("remainders..."+rem);
-
+			quotient.add(monom);
 		}
-		quoRem[1] = new Polynomial(rem);
+		quoRem[1] = new Polynomial(quotient);
 		return quoRem;
 	}
 

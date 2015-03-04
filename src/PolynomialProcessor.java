@@ -2,11 +2,37 @@
 
 public class PolynomialProcessor {
 	
-	PolyFactory factory;
+	int value;
 	Polynomial a;
 	Polynomial b;
 	Polynomial res;
 	Polynomial[] divPoly = new Polynomial[2];
+	
+	public Polynomial getA(){
+		return a;
+	}
+	
+	public Polynomial getB(){
+		return b;
+	}
+	
+	public Polynomial getRes(){
+		return res;
+	}
+	
+	public Polynomial getQuotient(){
+		return divPoly[1];
+	}
+	
+	public Polynomial getRemainder(){
+		return divPoly[0];
+	}
+	public void setValue(int num){
+		value = num;
+	}
+	public int getValue(){
+		return value;
+	}
 
 	public void polyFactoringA(String inputString) {
 		a = PolyFactory.Factory(inputString);

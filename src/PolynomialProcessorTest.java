@@ -12,7 +12,7 @@ public class PolynomialProcessorTest {
 		Polynomial a = PolyFactory.Factory("2x^3+1x^1+3");
 		Polynomial b = PolyFactory.Factory("2x^1+7"); 
 		Polynomial resInput = PolyFactory.Factory("2x^3+3x^1+10");
-		Polynomial res = processor.add(a, b);
+		Polynomial res = processor.add(a,b);
 		assertTrue(res.equalsPoly(resInput));
 	}
 	
@@ -36,13 +36,10 @@ public class PolynomialProcessorTest {
 	public void testDivide() {
 		Polynomial a = PolyFactory.Factory("x^2+2x+1");
 		Polynomial b = PolyFactory.Factory("x+1"); 
-		
-		Polynomial quotient = PolyFactory.Factory("2");
+		Polynomial quotient = PolyFactory.Factory("x+1");
 		Polynomial remainder = PolyFactory.Factory("0");
-		
 		Polynomial[] res = processor.divide(a, b);
-	
-		assertTrue(res[0].equalsPoly(quotient) && res[0].equalsPoly(remainder));
+		assertTrue(res[1].equalsPoly(quotient) && res[0].equalsPoly(remainder));
 	}
 	@Test
 	public void testDifferentiate() {
